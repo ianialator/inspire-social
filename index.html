@@ -10,9 +10,26 @@
 </head>
 
 <body>
+  <header>
+    <h1> Inspire Social </h1>
+    <button id="butPass"></button>
+  </header>
   <main>
-  
+    <form action="/responses.csv" method="post">
+      <div> this is where prompts go </div>
+      <br>
+      <input type="text" name="response">
+      <br><br>
+      <input type="submit" Value="submit">
+    </form>
   </main>
-</body>
+ 
+  <div class="loader">
+    <svg viewBox="0 0 32 32" width="32" height="32">
+      <circle id="spinner" cx="16" cy="16" r="14" fill="none"></circle>
+    </svg>
+  </div>
 
+  <!-- Insert link to app.js here -->
+</body>
 </html>
