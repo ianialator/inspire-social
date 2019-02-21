@@ -4,10 +4,47 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>My hello world page</title>
-    <link rel="stylesheet" type="text/css" href="hello-world.css" media="all">
+    <title>Inspire Social</title>
+    <link rel="stylesheet" type="text/css" href="styles.css" media="all">
   </head>
   <body>
-    <h1 class="vertical-container">Hello World</h1>
+    <div id="app">
+      <h2>Today's prompt</h2><br>
+      <p>{{newPrompt}}</p>
+      <form>
+        <input type="text" name="response"><br>
+        <input type="submit" value="Submit" v-on:click="genPrompt">
+      </form>
+    </div>
+
+    <script>
+      const problems = ["Food insecurity", "Food waste", "Homelessness", "Student debt", "Medical debt", "Domestic abuse", "Petty crime", "Drug abuse/addiction", "Isolationism (as a political policy, not just loneliness)", "Loneliness", "nationalism/racism", "Misogyny/Patriarchy", "Systemic/institutionalized racism", "School-to-prison pipeline", "Prison system", "Radicalism", "Waste management", "Human Trafficking", "Medical inaccessibility", "Slavery", "Gun violence", "Future-proofing institutions", "Fascism", "Prejudice"]
+
+      new Vue({
+        el: "#app",
+        data: {
+          newPrompt: newPrompt
+        },
+        methods: {
+          genPrompt: function () {
+            let newPrompt = str;
+            let todayType = math.floor(math.random() * 4) + 1;
+
+            file = localStorage.getItem("promptSkel");
+            prompts = JSON.parse(file);
+            newPrompt = prompts.todayType[math.floor(math.random() * todayType.length)];
+
+            let thisProblem = problems[Math.floor(Math.random() * problems.length)];
+            newPrompt = newPrompt.replace("[problem]", thisProblem)
+
+            return newPrompt;
+          }
+        },
+        beforeMount(){
+          this.genPrompt()
+        }
+      },
+      )
+    </script>
   </body>
 </html>
