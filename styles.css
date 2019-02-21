@@ -1,0 +1,44 @@
+body {
+  font-family: helvetica;
+  text-align: center;
+}
+
+#app {
+  background: #fff;
+  border-radius: 4px;
+  padding: 20px;
+  transition: all 0.2s;
+}
+
+h2 {
+  font-weight: bold;
+  margin-bottom: 25px;
+	size: 20px;
+}
+
+p {
+	color: #a3ba34;
+	size: 16px;
+}
+
+input[type=text] {
+  width: 80%;
+  padding: 10px;
+  position: absolute;
+  left: 50%;
+  margin-right: -50%;
+  transform: translate(-50%, -50%);
+	top: 100px;
+  border: 2px solid grey;
+  border-radius: 10px;
+}
+
+input[type=submit] {
+	margin: 20px;
+  margin-left: auto;
+	width: 50%;
+  background-color: #4CAF50;
+  color: white;
+  padding: 10px;
+	position: relative;
+}
