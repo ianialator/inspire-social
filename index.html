@@ -21,7 +21,7 @@
     <script>
       const problems = ["food insecurity", "food waste", "homelessness", "student debt", "medical debt", "domestic abuse", "petty crime", "drug abuse/addiction", "isolationism (as a political policy, not just loneliness)", "loneliness", "nationalism/racism", "misogyny/patriarchy", "systemic/institutionalized racism", " the school-to-prison pipeline", "prison system", "radicalism", "waste management problems", "human trafficking", "medical inaccessibility", "slavery", "gun violence", "future-proofing institutions", "fascism", "prejudice"]
 
-      const prompts = `{
+      const promptSkel = `{
         "prob/fact": ["Put [problem] in perspective, demonstrate the scale of it. In numbers", "Give an example of a little effort going a long way for [problem].", "Make/find a flow chart of how [problem] works", "Show how spread out [problem] is. (There is work to be done everywhere).", "Find a stat from before 2000 that shows how persistent [problem] is.", "Find a stat showing slow progress on [problem].", "Find a stat showing a prediction of just a LITTLE bit of effort being made to fix [problem]", "Find a stat highlighting the slow road to recovery associated with [problem]"],
         "prob/thought": ["How does [problem] make you feel personally? Why?", "What do you think it would be like if [problem] were solved?", "How does [problem] affect me?", "What change would you make to try to fix [problem]", "Give me your thoughts on the history of [problem]", "What’s a historic norm that we’ve broken?", "How have we dealt with [problem] in the past?", "What do you want to be remembered for?"],
         "solution/fact": ["Find a really cool stat about the NPS market.", "Find a really hopeful indicator in the economy right now.", "Any promising stats for us? People being interested in getting involved.", "Find a stat on people's feelings toward volunteer work and the obstacles.", "What are some obstacles you face in doing more?", "Find a stat about what a little bit of effort can do for [problem] - or another cause.", "Find a stat about how many of some new crazy thing there are in the world", "Any stats on the sharing economy?", "Find out a stat about what people usually spend their time on.", "What’s a good deed you could do in less than 10 minutes?", "What things do Americans have an abundance of that could fill needs of people suffering from the effects of [problem]?", "Any news/cool work being done to solve [problem]?",]
@@ -38,7 +38,7 @@
         methods: {
           genPrompt() {
 
-            //prompts = JSON.parse(promptSkel);
+            prompts = JSON.parse(promptSkel);
             
             let categoryIndex = Math.floor(Math.random() * 4);
             let category = prompts[Object.keys(prompts)[categoryIndex]];
