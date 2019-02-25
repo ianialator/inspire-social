@@ -1,10 +1,11 @@
 body {
   font-family: helvetica;
   text-align: center;
+  background-color: #dbf0ff;
+  
 }
 
 #app {
-  background: #fff;
   border-radius: 4px;
   padding: 20px;
   transition: all 0.2s;
@@ -12,13 +13,13 @@ body {
 
 h2 {
   font-weight: bold;
+  font-size: 30px;
   margin-bottom: 25px;
-	font-size: 20px;
 }
 
 p {
-	color: #a3ba34;
-	font-size: 16px;
+  color: #a3ba34;
+  font-size: 20px;
 }
 
 input[type=text] {
@@ -27,17 +28,17 @@ input[type=text] {
   /* position: absolute;
   left: 50%;
   transform: translate(-50%, -50%); */
-	top: 100px;
+  top: 100px;
   border: 2px solid grey;
   border-radius: 10px;
 }
 
 input[type=submit] {
-	margin: 20px;
+  margin: 20px;
   margin-left: auto;
-	width: 50%;
-  background-color: #4CAF50;
+  width: 40%;
+  background-color: #2bff0f;
   color: white;
   padding: 10px;
-	position: relative;
+  position: relative;
 }
