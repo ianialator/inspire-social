@@ -35,10 +35,12 @@ input[type=text] {
 
 input[type=submit] {
   margin: 20px;
+  font-size: 14px;
+  font-weight: bold;
   margin-left: auto;
   width: 40%;
   background-color: #2bff0f;
-  color: white;
+  color: #2e5ca5;
   padding: 10px;
   position: relative;
 }
