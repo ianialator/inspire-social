@@ -45,8 +45,9 @@
             let newPrompt = category[Math.floor(Math.random() * category.length)];
 
             let thisProblem = problems[Math.floor(Math.random() * problems.length)];
-            newPrompt = newPrompt.replace("[problem]", thisProblem)
+            newPrompt = newPrompt.replace("[problem]", thisProblem);
 
+            return newPrompt;
           }
         },
         beforeMount(){
