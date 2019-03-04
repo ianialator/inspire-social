@@ -11,7 +11,8 @@
   <body>
     <div id="app">
       <h2>Today's prompt</h2>
-      <p>{{newPrompt}}</p>
+      <h5>{{newPrompt}}</h5>
+      <p>{{category}}</p>
       <form>
         <input type="text" name="response">
         <input type="submit" value="Submit" v-on:click="genPrompt">
@@ -46,7 +47,6 @@
             let thisProblem = problems[Math.floor(Math.random() * problems.length)];
             newPrompt = newPrompt.replace("[problem]", thisProblem)
 
-            return newPrompt;
           }
         },
         beforeMount(){
@@ -54,7 +54,6 @@
         }
       },
       )
-      console.log(newPrompt);
     </script>
   </body>
 </html>
