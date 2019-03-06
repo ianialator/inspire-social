@@ -13,9 +13,9 @@
       <h2>Today's prompt</h2>
       <h5>{{newPrompt}}</h5>
       <p>{{category}}</p>
-      <form>
-        <input type="text" name="response">
-        <input type="submit" value="Submit" v-on:click="genPrompt">
+      <form id="resond">
+        <input type="text" id="response" name="response" v-model="thought">
+        <input type="submit" value="Submit" v-on:click="submitResponse">
       </form>
     </div>
 
@@ -29,6 +29,8 @@
         "solution/thought": ["How do you get pumped for civic work?", "Any nice stories you want to share your thoughts on?", "How do you cope with hearing about [problem] (or any other problems) in the world?", "Give an example of how easy Go Unite could make things?", "What's a project that would work well on Go Unite to combat [problem]?", "What do you think will be the next big thing for the sharing economy?", "Will the sharing economy change the landscape surrounding [problem]?", "What innovative, techy, just down-right future-as-hell thing did you hear about recently?", "What’s a good deed you do everyday?", "What’s a good deed you could do as like a byproduct of a routine act?"]
       }`;
       
+      const response = document.getElementByID('response');
+      
       new Vue({
         el: "#app",
         data: {
@@ -36,7 +38,7 @@
         },
         methods: {
           genPrompt() {
-
+            
             prompts = JSON.parse(promptSkel);
             
             let categoryIndex = Math.floor(Math.random() * 4);
@@ -55,6 +57,14 @@
         }
       },
       )
+      new Vue({
+        el: "#respond",
+        data: {thought},
+        methods: {
+          submitResponse(){
+            
+          }
+        }
     </script>
   </body>
 </html>
