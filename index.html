@@ -7,19 +7,31 @@
     <title>Inspire Social</title>
     <link rel="stylesheet" type="text/css" href="styles.css" media="all">
     <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.8.5/firebase.js"></script>
   </head>
   <body>
     <div id="app">
       <h2>Today's prompt</h2>
-      <h5>{{newPrompt}}</h5>
-      <p>{{category}}</p>
+      <p>{{newPrompt}}</p>
       <form id="resond">
         <input type="text" id="response" name="response" v-model="thought">
         <input type="submit" value="Submit" v-on:click="submitResponse">
       </form>
     </div>
 
+//all the rest of the JS ==================================================================================
     <script>
+      // Initialize Firebase
+      var config = {
+        apiKey: "AIzaSyCk0QafOxLmLwDyQXa58Ktrz_qjfl_Edf4",
+        authDomain: "inspire-social.firebaseapp.com",
+        databaseURL: "https://inspire-social.firebaseio.com",
+        projectId: "inspire-social",
+        storageBucket: "inspire-social.appspot.com",
+        messagingSenderId: "495940347374"
+      };
+      firebase.initializeApp(config);
+      
       const problems = ["food insecurity", "food waste", "homelessness", "student debt", "medical debt", "domestic abuse", "petty crime", "drug abuse/addiction", "isolationism (as a political policy, not just loneliness)", "loneliness", "nationalism/racism", "misogyny/patriarchy", "systemic/institutionalized racism", " the school-to-prison pipeline", "prison system", "radicalism", "waste management problems", "human trafficking", "medical inaccessibility", "slavery", "gun violence", "future-proofing institutions", "fascism", "prejudice"]
 
       const promptSkel = `{
@@ -30,7 +42,8 @@
       }`;
       
       const response = document.getElementByID('response');
-      
+  //All the Vue stuff ============================================================================================
+      //making a new prompt and saving it as <newPrompt>
       new Vue({
         el: "#app",
         data: {
@@ -57,12 +70,13 @@
         }
       },
       )
+      //submiting the response to firebase
       new Vue({
         el: "#respond",
         data: {thought},
         methods: {
-          submitResponse(){
-            
+          submitResponse: function(){
+            this.$http.post("https://inspire-social.firebaseio.com/firstReplies"}
           }
         }
     </script>
