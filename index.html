@@ -62,6 +62,9 @@
             newPrompt = newPrompt.replace("[problem]", thisProblem);
 
             return newPrompt;
+          },
+          submitResponse() {
+            this.$http.post("https://inspire-social.firebaseio.com/firstReplies"}
           }
         },
         beforeMount(){
@@ -69,15 +72,6 @@
         }
       },
       )
-      //submiting the response to firebase
-      new Vue({
-        el: "#respond",
-        data: {thought},
-        methods: {
-          submitResponse: function(){
-            this.$http.post("https://inspire-social.firebaseio.com/firstReplies"}
-          }
-        }
     </script>
   </body>
 </html>
