@@ -14,7 +14,7 @@
       <h2>Today's prompt</h2>
       <p>{{newPrompt}}</p>
       <form id="resond">
-        <input type="text" id="response" name="response" v-model="thought">
+        <input type="text" id="response" name="response">
         <input type="submit" value="Submit" v-on:click="submitResponse">
       </form>
     </div>
@@ -65,7 +65,7 @@
           },
           submitResponse() {
             firebase.database().ref('posts').push({
-              thought,
+              response,
             });
           }
         },
