@@ -30,9 +30,9 @@
         messagingSenderId: "495940347374"
       };
       firebase.initializeApp(config);
+      const db = firebase.database()
       
       const problems = ["food insecurity", "food waste", "homelessness", "student debt", "medical debt", "domestic abuse", "petty crime", "drug abuse/addiction", "isolationism (as a political policy, not just loneliness)", "loneliness", "nationalism/racism", "misogyny/patriarchy", "systemic/institutionalized racism", " the school-to-prison pipeline", "prison system", "radicalism", "waste management problems", "human trafficking", "medical inaccessibility", "slavery", "gun violence", "future-proofing institutions", "fascism", "prejudice"]
-
       const promptSkel = `{
         "prob/fact": ["Put [problem] in perspective, find something demonstrating the scale of it. In numbers", "Find an example of a little effort going a long way for [problem].", "Make/find a flow chart of how [problem] works", "Find an example that shows how spread out [problem] is. (There is work to be done everywhere).", "Find a stat from before 2000 that shows how persistent [problem] is.", "Find a stat showing slow progress on [problem].", "Find a stat showing a prediction of just a LITTLE bit of effort being made to fix [problem]", "Find an example highlighting the slow road to recovery associated with [problem]"],
         "prob/thought": ["How does [problem] make you feel personally? Why?", "What do you think it would be like if [problem] were solved?", "How does [problem] affect you?", "What change would you make to try to fix [problem] (if you had all the resources in the world)", "Give me your thoughts on the history of [problem]", "What’s a historic norm that we’ve broken?", "How have we dealt with [problem] in the past?", "What do you want to be remembered for?"],
@@ -64,7 +64,8 @@
             return newPrompt;
           },
           submitResponse() {
-            firebase.database().ref('posts').push({
+            var date = new Date()
+            db.ref('posts/' + date.getMonth() + date.getDate() + date.detTime()).set({
               response,
             });
           }
