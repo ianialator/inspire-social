@@ -65,8 +65,8 @@
           },
           submitResponse() {
             var date = new Date()
-            db.ref('posts/' + date.getMonth() + date.getDate() + date.detTime()).set({
-              response,
+            db.ref(date.getMonth() + date.getDate() + date.getTime()).push({
+              response
             });
           }
         },
