@@ -30,7 +30,7 @@
         messagingSenderId: "495940347374"
       };
       firebase.initializeApp(config);
-      const db = firebase.database()
+      const db = firebase.database();
       
       const problems = ["food insecurity", "food waste", "homelessness", "student debt", "medical debt", "domestic abuse", "petty crime", "drug abuse/addiction", "isolationism (as a political policy, not just loneliness)", "loneliness", "nationalism/racism", "misogyny/patriarchy", "systemic/institutionalized racism", " the school-to-prison pipeline", "prison system", "radicalism", "waste management problems", "human trafficking", "medical inaccessibility", "slavery", "gun violence", "future-proofing institutions", "fascism", "prejudice"]
       const promptSkel = `{
@@ -63,7 +63,7 @@
             return newPrompt;
           },
           submitResponse(response) {
-            //var date = new Date()
+            var date = getDate()
             db.ref().push(response)
           }
         },
