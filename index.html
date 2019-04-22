@@ -15,7 +15,7 @@
       <p>{{newPrompt}}</p>
       <form id="submit">
         <input type="text" id="response" name="response">
-        <input v-on:click="submitResponse(document.getElementByID(response).value)" type="submit" value="Submit">
+        <button v-on:click="submitResponse(document.getElementByID(response).value)"> SUBMIT</button>
       </form>
     </div>
 
