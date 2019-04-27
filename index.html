@@ -67,7 +67,8 @@
           submitResponse(response) {
             var today = new Date();
             var timestamp = today.getHours() + ":" + today.getMinutes();
-            db.ref(timestamp).set(response, onComplete= console.log(timestamp + response))
+            db.ref(timestamp).set(response)
+            console.log(timestamp + response)
           }
         },
         beforeMount(){
