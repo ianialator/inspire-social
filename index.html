@@ -13,7 +13,7 @@
       <h2>Today's prompt</h2>
       <p>{{newPrompt}}</p>
       <form id="submit">
-        <input type="text" id="response" name="response">
+        <input type="text" id="response" name="response" autocomplete="off">
         <button v-on:click="submitResponse(document.getElementByID(response).value)"> SUBMIT</button>
       </form>
     </div>
@@ -66,8 +66,9 @@
             return newPrompt;
           },
           submitResponse(response) {
-            var date = getDate()
-            db.ref().push(response)
+            var today = new Date();
+            var timestamp = today.getHours() + ":" + today.getMinutes()
+            db.ref(timestamp).set(response)
           }
         },
         beforeMount(){
