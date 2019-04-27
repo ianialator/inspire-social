@@ -7,7 +7,6 @@
     <title>Inspire Social</title>
     <link rel="stylesheet" type="text/css" href="styles.css" media="all">
     <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/5.8.5/firebase.js"></script>
   </head>
   <body>
     <div id="app">
@@ -21,7 +20,11 @@
 
     <script>
       // Initialize Firebase
-      var config = {
+      src="https://www.gstatic.com/firebasejs/5.10.1/firebase-app.js"
+      //specific SDKs
+      src="https://www.gstatic.com/firebasejs/5.10.1/firebase-auth.js"
+      src="https://www.gstatic.com/firebasejs/5.10.1/firebase-database.js"
+      var fbconfig = {
         apiKey: "AIzaSyCk0QafOxLmLwDyQXa58Ktrz_qjfl_Edf4",
         authDomain: "inspire-social.firebaseapp.com",
         databaseURL: "https://inspire-social.firebaseio.com",
@@ -29,9 +32,9 @@
         storageBucket: "inspire-social.appspot.com",
         messagingSenderId: "495940347374"
       };
-      firebase.initializeApp(config);
+      firebase.initializeApp(fbconfig);
       const db = firebase.database();
-      
+      //data stuff for the app
       const problems = ["food insecurity", "food waste", "homelessness", "student debt", "medical debt", "domestic abuse", "petty crime", "drug abuse/addiction", "isolationism (as a political policy, not just loneliness)", "loneliness", "nationalism/racism", "misogyny/patriarchy", "systemic/institutionalized racism", " the school-to-prison pipeline", "prison system", "radicalism", "waste management problems", "human trafficking", "medical inaccessibility", "slavery", "gun violence", "future-proofing institutions", "fascism", "prejudice"]
       const promptSkel = `{
         "prob/fact": ["Put [problem] in perspective, find something demonstrating the scale of it. In numbers", "Find an example of a little effort going a long way for [problem].", "Make/find a flow chart of how [problem] works", "Find an example that shows how spread out [problem] is. (There is work to be done everywhere).", "Find a stat from before 2000 that shows how persistent [problem] is.", "Find a stat showing slow progress on [problem].", "Find a stat showing a prediction of just a LITTLE bit of effort being made to fix [problem]", "Find an example highlighting the slow road to recovery associated with [problem]"],
