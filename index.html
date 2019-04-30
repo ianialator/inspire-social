@@ -14,7 +14,7 @@
       <p>{{newPrompt}}</p>
       <form id="submit">
         <input type="text" id="response" name="response" autocomplete="off">
-        <button @click.prevent="submitResponse(document.getElementByID(response).value)"> SUBMIT</button>
+        <button @click.prevent="submitResponse(this.$refs.response)"> SUBMIT</button>
         <button v-show="success">NEXT</button>
       </form>
     </div>
