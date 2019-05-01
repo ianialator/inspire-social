@@ -13,8 +13,8 @@
       <h2>Today's prompt</h2>
       <p>{{newPrompt}}</p>
       <form id="submit">
-        <input type="text" id="response" name="response" autocomplete="off">
-        <button @click.prevent="submitResponse(this.$refs.response)"> SUBMIT</button>
+        <input type="text" id="entry" name="entry" autocomplete="off">
+        <button @click.prevent="submitResponse(this.$refs.entry)"> SUBMIT</button>
         <button v-show="success">NEXT</button>
       </form>
     </div>
@@ -69,11 +69,11 @@
 
             return newPrompt;
           },
-          submitResponse(response) {
+          submitResponse(entry) {
             var today = new Date();
             var timestamp = today.getHours() + ":" + today.getMinutes();
-            db.ref(timestamp).set(response, submitted);
-            console.log(timestamp + response);
+            db.ref(timestamp).set(entry, submitted);
+            console.log(timestamp + entry);
           }
         },
         beforeMount(){
