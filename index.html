@@ -13,8 +13,8 @@
       <h2>Today's prompt</h2>
       <p>{{newPrompt}}</p>
       <form id="submit">
-        <input type="text" id="entry" name="entry" autocomplete="off">
-        <button @click.prevent="submitResponse(this.$refs.entry)"> SUBMIT</button>
+        <input type="text" id="entry" name="entry" autocomplete="off" v-model="entry">
+        <button @click.prevent="submitResponse(this.$refs[entry])"> SUBMIT</button>
         <button v-show="success">NEXT</button>
       </form>
     </div>
@@ -78,6 +78,7 @@
         },
         beforeMount(){
           this.newPrompt =  this.genPrompt();
+          this.entry = this.submitResponse();
         }
       },
       )
