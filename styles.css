@@ -1,12 +1,12 @@
-background: linear-gradient(326deg, #4B4237, #2D7DD2, #28502E, #f75C03, #5F0F40);
+background: linear-gradient(237deg, #4b4237, #2d7dd2, #28502e, #f75c03, #5f0f40);
 background-size: 1000% 1000%;
 
-animation: AnimationName 29s ease infinite;
+animation: BGcolors 50s ease infinite;
 
-@keyframes AnimationName { 
-    0%{background-position:0% 92%}
-    50%{background-position:100% 9%}
-    100%{background-position:0% 92%}
+@keyframes BGcolors { 
+    0%{background-position:99% 0%}
+    50%{background-position:2% 100%}
+    100%{background-position:99% 0%}
 }
 
 body {
