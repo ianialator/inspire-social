@@ -15,7 +15,7 @@
       <form id="submit">
         <input type="text" id="entry" name="entry" autocomplete="off" v-model="entry">
         <button @click.prevent="submitResponse(entry)"> SUBMIT</button>
-        <button v-show={{success}} @click.prevent="next">NEXT</button>
+        <button v-show="{{success}}" @click.prevent="next">NEXT</button>
       </form>
     </div>
     <script console.log("line 20" + newPrompt)></script>
