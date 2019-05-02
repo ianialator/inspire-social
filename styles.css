@@ -1,8 +1,14 @@
 background: linear-gradient(237deg, #4b4237, #2d7dd2, #28502e, #f75c03, #5f0f40);
 background-size: 1000% 1000%;
 
+-webkit-animation: BGcolors 50s ease infinite;
 animation: BGcolors 50s ease infinite;
 
+@-webkit-keyframes BGcolors{
+    0%{background-position:99% 0%}
+    50%{background-position:2% 100%}
+    100%{background-position:99% 0%}
+}
 @keyframes BGcolors { 
     0%{background-position:99% 0%}
     50%{background-position:2% 100%}
