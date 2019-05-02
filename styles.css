@@ -1,8 +1,17 @@
+background: linear-gradient(326deg, #4b4237, #2d7dd2, #28502e, #f75c03, #5f0f40);
+background-size: 1000% 1000%;
+
+animation: AnimationName 29s ease infinite;
+
+@keyframes AnimationName { 
+    0%{background-position:0% 92%}
+    50%{background-position:100% 9%}
+    100%{background-position:0% 92%}
+}
+
 body {
   font-family: helvetica;
-  text-align: center;
-  background-color: #dbf0ff;
-  
+  text-align: center;  
 }
 
 #app {
@@ -18,7 +27,7 @@ h2 {
 }
 
 p {
-  color: #a3ba34;
+  color: #EDE7D9;
   font-size: 20px;
 }
 
