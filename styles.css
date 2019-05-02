@@ -1,4 +1,4 @@
-background: linear-gradient(326deg, #4b4237, #2d7dd2, #28502e, #f75c03, #5f0f40);
+background: linear-gradient(326deg, #4B4237, #2D7DD2, #28502E, #f75C03, #5F0F40);
 background-size: 1000% 1000%;
 
 animation: AnimationName 29s ease infinite;
@@ -12,12 +12,6 @@ animation: AnimationName 29s ease infinite;
 body {
   font-family: helvetica;
   text-align: center;  
-}
-
-#app {
-  border-radius: 4px;
-  padding: 20px;
-  transition: all 0.2s;
 }
 
 h2 {
