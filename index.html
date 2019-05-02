@@ -15,7 +15,7 @@
       <form id="submit">
         <input type="text" id="entry" name="entry" autocomplete="off" v-model="entry">
         <button @click.prevent="submitResponse(entry)"> SUBMIT</button>
-        <button v-show="{{success}}" @click.prevent="next">NEXT</button>
+        <button v-show="success" @click.prevent="next">NEXT</button>
       </form>
     </div>
     <script console.log("line 20" + newPrompt)></script>
@@ -44,7 +44,6 @@
       }`;
 
       //All the Vue stuff ============================================================================================
-      //making a new prompt and saving it as <newPrompt>
       new Vue({
         el: "#app",
         data: {
@@ -54,19 +53,16 @@
         },
         methods: {
           genPrompt: function () {
-
             prompts = JSON.parse(promptSkel);
-
             let categoryIndex = Math.floor(Math.random() * 4);
             let category = prompts[Object.keys(prompts)[categoryIndex]];
-
             let newPrompt = category[Math.floor(Math.random() * category.length)];
-
             let thisProblem = problems[Math.floor(Math.random() * problems.length)];
             newPrompt = newPrompt.replace("[problem]", thisProblem);
-
+            
             return newPrompt;
           },
+          
           submitResponse: function (entry) {
             var today = new Date();
             var date = today.getMonth() + '/' + today.getDate();
