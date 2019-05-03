@@ -56,12 +56,12 @@
         },
         methods: {
           genPrompt: function () {
-            prompts = JSON.parse(promptSkel);
+            let prompts = JSON.parse(promptSkel);
             let categoryIndex = Math.floor(Math.random() * 4);
             let category = prompts[Object.keys(prompts)[categoryIndex]];
             let prompt = category[Math.floor(Math.random() * category.length)];
             let thisProblem = problems[Math.floor(Math.random() * problems.length)];
-            let keyMaybe = Object.keys(prompt);
+            let keyMaybe = Object.keys(prompts) Object.keys(prompts).find(key => prompts[key] === prompt);
             prompt = prompt.replace("[problem]", thisProblem);
             
             //let keyMaybe = 
