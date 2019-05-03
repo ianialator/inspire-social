@@ -12,7 +12,7 @@
   <body>
     <div id="app">
       <h2>YOUR PROMPT</h2>
-      <p>{{thisData.prompt}}</p>
+      <p>{{thisData}}</p>
       <form id="submit">
         <input type="text" id="entry" name="entry" autocomplete="off" v-model="entry">
         <button @click.prevent="submitResponse(entry)"> SUBMIT</button>
