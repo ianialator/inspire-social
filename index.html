@@ -49,7 +49,7 @@
         data: {
           thisData: {
             prompt: '',
-            category: '',
+            type',
             problem: '',
           },
           entry: '',
@@ -58,17 +58,21 @@
           genPrompt: function () {
             prompts = JSON.parse(promptSkel);
             let categoryIndex = Math.floor(Math.random() * 4);
-            let thisCat = prompts[Object.keys(prompts)];
-            let category = thisCat[categoryIndex];
+            let category = prompts[Object.keys(prompts)[categoryIndex]];
             let prompt = category[Math.floor(Math.random() * category.length)];
             let thisProblem = problems[Math.floor(Math.random() * problems.length)];
-            
             prompt = prompt.replace("[problem]", thisProblem);
+            
+            let keyMaybe = prompts[Object.keys(prompts)]
+            
+            console.log("VAR_categoryIndex = " + categoryIndex);
+            console.log("VAR_category = " + category);
+            console.log("TEST_type = " + keyMaybe)
             let problem = thisProblem;
-            category = thisCat
+            let type = keyMaybe
             let thisData = [
               prompt,
-              category,
+              type
               problem,
             ]
             
@@ -81,7 +85,7 @@
             var time = today.getHours() + ':' + today.getMinutes() + ':' + today.getSeconds();
             db.ref(date+'/'+time).set({
               response: entry,
-              category: this.thisData.category,
+              type.thisData.category,
               problem: this.thisData.problem
               },
               function(){
