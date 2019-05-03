@@ -50,7 +50,7 @@
           thisData: {
             prompt: '',
             category: '',
-            thisProblem: '',
+            problem: '',
           },
           entry: '',
         },
@@ -61,11 +61,12 @@
             let category = prompts[Object.keys(prompts)[categoryIndex]];
             let prompt = category[Math.floor(Math.random() * category.length)];
             let thisProblem = problems[Math.floor(Math.random() * problems.length)];
-            prompt = prompt.replace("[problem]", thisProblem)
+            prompt = prompt.replace("[problem]", thisProblem);
+            let problem = thisProblem;
             let thisData = [
               prompt,
               category,
-              thisProblem,
+              problem,
             ]
             
             return thisData;
@@ -77,8 +78,8 @@
             var time = today.getHours() + ':' + today.getMinutes() + ':' + today.getSeconds();
             db.ref(date+'/'+time).set({
               response: entry,
-              category: this.thisData[1],
-              problem: this.thisData[2]
+              category: this.thisData.category,
+              problem: this.thisData.problem
               },
               function(){
                 success = true;
@@ -88,13 +89,13 @@
           },
           next: function () {
             this.genPrompt();
-            this.newPrompt = this.thisData[0];
+            this.newPrompt = this.thisData.prompt;
             var success = false;
           },
         },
         beforeMount(){
           this.genPrompt();
-          this.newPrompt =  this.thisData[0];
+          this.newPrompt =  this.thisData.prompt;
         }
       },
       )
