@@ -44,11 +44,12 @@ button {
 
 @keyframes BGcolors { 
     0%{background-color:#f75c03}
-    20%{background-color:#28502e}
-    40%{background-color:#4b4237}
-    60%{background-color:#2d7dd2}
-    800%{background-color:#5f0f40}
-    100%{background-color:#ed1566}
+    17%{background-color:#28502e}
+    34%{background-color:#4b4237}
+    51%{background-color:#2d7dd2}
+    68%{background-color:#5f0f40}
+    85%{background-color:#ed1566}
+    100%{background-color:#f75c03}
 }
 
 @keyframes buttons {
