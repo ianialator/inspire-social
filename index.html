@@ -19,7 +19,6 @@
         <button @click="genPrompt">NEXT</button>
       </form>
     </div>
-    <script console.log("line 20" + newPrompt)></script>
 
     <script src="https://www.gstatic.com/firebasejs/5.10.1/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/5.10.1/firebase-auth.js"></script>
@@ -75,8 +74,8 @@
             var time = today.getHours() + ':' + today.getMinutes() + ':' + today.getSeconds();
             db.ref(date+'/'+time).set({
               response: entry,
-              category: genPrompt()[1],
-              problem: genPrompt()[2]
+              category: this.thisData[1],
+              problem: this.thisData[2]
               },
               function(){
                 success = true;
@@ -85,12 +84,14 @@
             console.log(time + ' ' + entry);
           },
           next: function () {
-            genPrompt()[0];
+            this.genPrompt();
+            this.newPrompt = this.thisData[0];
             var success = false;
           },
         },
         beforeMount(){
-          this.newPrompt =  this.genPrompt()[0];
+          this.genPrompt();
+          this.newPrompt =  this.thisData[0];
         }
       },
       )
