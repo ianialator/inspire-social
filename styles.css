@@ -1,8 +1,7 @@
 body {
   font-family: helvetica;
   text-align: center;
-  background-size: 400%, 400%;
-  background: linear-gradient(270deg, #f75c03, #28502e, #4b4237, #2d7dd2, #5f0f40, #ed1566);
+  background-color: #f75c03;
   animation: BGcolors 50s ease infinite;
 }
 
@@ -43,9 +42,12 @@ button {
 }
 
 @keyframes BGcolors { 
-  0%{background-position:0% 50%}
-  50%{background-position:100% 50%}
-  100%{background-position:0% 50%}
+    0%{background-color:#f75c03}
+    20%{background-color:#28502e}
+    40%{background-color:#4b4237}
+    60%{background-color:#2d7dd2}
+    800%{background-color:#5f0f40}
+    100%{background-color:#ed1566}
 }
 
 @keyframes buttons {
