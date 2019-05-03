@@ -12,7 +12,7 @@
   <body>
     <div id="app">
       <h2>YOUR PROMPT</h2>
-      <p>{{thisData.prompt}}</p>
+      <p>{{thisData[0]}}</p>
       <form id="submit">
         <input type="text" id="entry" name="entry" autocomplete="off" v-model="entry">
         <button @click.prevent="submitResponse(entry)"> SUBMIT</button>
@@ -58,15 +58,17 @@
           genPrompt: function () {
             prompts = JSON.parse(promptSkel);
             let categoryIndex = Math.floor(Math.random() * 4);
-            let category = prompts[Object.keys(prompts)[categoryIndex]];
-            let thisCat = category[Math.floor(Math.random() * category.length)];
+            let thisCat = prompts[Object.keys(prompts)]
+            let category = thisCat[categoryIndex];
+            let prompt = category[Math.floor(Math.random() * category.length)];
             let thisProblem = problems[Math.floor(Math.random() * problems.length)];
             
-            let prompt = thisCat.replace("[problem]", thisProblem);
+            prompt = prompt.replace("[problem]", thisProblem);
             let problem = thisProblem;
+            category = thisCat
             let thisData = [
               prompt,
-              thisCat,
+              category,
               problem,
             ]
             
@@ -79,8 +81,8 @@
             var time = today.getHours() + ':' + today.getMinutes() + ':' + today.getSeconds();
             db.ref(date+'/'+time).set({
               response: entry,
-              category: this.thisData.category,
-              problem: this.thisData.problem
+              category: this.thisData[1],
+              problem: this.thisData[2]
               },
               function(){
                 success = true;
