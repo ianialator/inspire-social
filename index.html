@@ -74,8 +74,8 @@
             var time = today.getHours() + ':' + today.getMinutes() + ':' + today.getSeconds();
             db.ref(date+'/'+time).set({
               response: entry,
-              category: this.thisData[1],
-              problem: this.thisData[2]
+              category: this.thisData[category],
+              problem: this.thisData[thisProblem]
               },
               function(){
                 success = true;
@@ -85,13 +85,13 @@
           },
           next: function () {
             this.genPrompt();
-            this.newPrompt = this.thisData[0];
+            this.newPrompt = this.thisData[prompt];
             var success = false;
           },
         },
         beforeMount(){
           this.genPrompt();
-          this.newPrompt =  this.thisData[0];
+          this.newPrompt =  this.thisData[prompt];
         }
       },
       )
