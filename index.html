@@ -61,9 +61,10 @@
             let category = prompts[Object.keys(prompts)[categoryIndex]];
             let prompt = category[Math.floor(Math.random() * category.length)];
             let thisProblem = problems[Math.floor(Math.random() * problems.length)];
+            let keyMaybe = prompt;
             prompt = prompt.replace("[problem]", thisProblem);
             
-            let keyMaybe = prompts[categoryIndex]
+            //let keyMaybe = 
             
             console.log("VAR_categoryIndex = " + categoryIndex);
             console.log("VAR_category = " + category);
