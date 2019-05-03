@@ -47,7 +47,11 @@
       new Vue({
         el: "#app",
         data: {
-          newPrompt: '',
+          new: {
+            prompt: '',
+            category: '',
+            thisProblem: '',
+          },
           success: Boolean(),
           entry: '',
         },
@@ -74,8 +78,8 @@
             var time = today.getHours() + ':' + today.getMinutes() + ':' + today.getSeconds();
             db.ref(date+'/'+time).set({
               response: entry,
-              category: this.thisData[category],
-              problem: this.thisData[thisProblem]
+              category: this.thisData[1],
+              problem: this.thisData[2]
               },
               function(){
                 success = true;
@@ -85,13 +89,13 @@
           },
           next: function () {
             this.genPrompt();
-            this.newPrompt = this.thisData[prompt];
+            this.newPrompt = this.thisData[0];
             var success = false;
           },
         },
         beforeMount(){
           this.genPrompt();
-          this.newPrompt =  this.thisData[prompt];
+          this.newPrompt =  this.thisData[0];
         }
       },
       )
