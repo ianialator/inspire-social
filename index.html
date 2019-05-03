@@ -12,7 +12,7 @@
   <body>
     <div id="app">
       <h2>YOUR PROMPT</h2>
-      <p>{{thisData}}</p>
+      <p>{{thisData[0]}}</p>
       <form id="submit">
         <input type="text" id="entry" name="entry" autocomplete="off" v-model="entry">
         <button @click.prevent="submitResponse(entry)"> SUBMIT</button>
@@ -64,17 +64,12 @@
             let keyMaybe = Object.keys(prompts)[categoryIndex];
             prompt = prompt.replace("[problem]", thisProblem);
             
-            //let keyMaybe = 
-            
-            console.log("VAR_categoryIndex = " + categoryIndex);
-            console.log("VAR_category = " + category);
-            console.log("TEST_type = " + keyMaybe)
             let problem = thisProblem;
             let type = keyMaybe
             let thisData = [
-              prompt,
-              type,
-              problem,
+              prompt: prompt,
+              type: type,
+              problem: problem,
             ]
             
             return thisData;
@@ -86,12 +81,12 @@
             var time = today.getHours() + ':' + today.getMinutes() + ':' + today.getSeconds();
             db.ref(date+'/'+time).set({
               response: entry,
-              type: thisData.type,
-              problem: this.thisData.problem
+              type: this.thisData.type,
+              problem: this.thisData.problem,
+              prompt: this.thisData.prompt
               },
               function(){
-                success = true;
-                console.log(success);
+                console.log('posted');
               });
             console.log(time + ' ' + entry);
           },
