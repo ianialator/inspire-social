@@ -88,14 +88,11 @@
             console.log(time + ' ' + entry);
           },
           next: function () {
-            this.genPrompt();
-            this.newPrompt = this.thisData.prompt;
-            var success = false;
+            this.thisData = this.getPrompt();
           },
         },
         beforeMount(){
-          this.genPrompt();
-          this.newPrompt =  this.thisData.prompt;
+          this.thisData =  this.genPrompt();
         }
       },
       )
