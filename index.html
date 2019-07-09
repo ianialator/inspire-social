@@ -5,99 +5,66 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Inspire Social</title>
-    <link rel="stylesheet" type="text/css" href="styles.css" media="all">
-    <link href="https://fonts.googleapis.com/css?family=Gugi" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="styles.css" media="all"></link>
+    <link href="https://fonts.googleapis.com/css?family=Gugi" rel="stylesheet"></link>
+
     <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
+
+    <link href="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.css" rel="stylesheet"></link>
+    <script src="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.js"></script>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"></link>
   </head>
   <body>
     <div id="app">
-      <h2>YOUR PROMPT</h2>
-      <p>{{thisData.prompt}}</p>
+      <h2>MEET {{promptData.name}}</h2>
+      <div id="card">
+        <table>
+          <tr>
+            <th>Age</th>
+            <th>Gender</th>
+            <th>Marital Status</th>
+            <th colspan="2">Location</th>
+          </tr>
+          <tr>
+            <td>{{promptData.age}}</td>
+            <td>{{promptData.gender}}</td>
+            <td>{{promptData.marStat}}</td>
+            <td>{{promptData.type}}</td>
+            <td>{{promptData.distance}}</td>
+          </tr>
+        </table>
+        <table>
+          <tr>
+            <th colspan="2">Job Preference</th>
+            <th>Cause(s)</th>
+          </tr>
+          <tr>
+            <td>{{promptData.jobStress}}</td>
+            <td>{{promptData.jobTime}}</td>
+            <td>{{promptData.cause}}</td>
+          </tr>
+        </table>
+        <table>
+          <tr>
+            <th>Motive</th>
+            <th>Tech Skill</th>
+          </tr>
+          <tr>
+            <td>{{promptData.motive}}</td>
+            <td>{{promptData.techSkill}}</td>
+          </tr>
+        </table>
+      </div>
       <form id="submit">
         <input type="text" id="entry" name="entry" autocomplete="off" v-model="entry">
         <button @click.prevent="submitResponse(entry)"> SUBMIT</button>
-        <button @click="genPrompt">NEXT</button>
+        <button @click="genPrompt">PASS</button>
       </form>
     </div>
 
     <script src="https://www.gstatic.com/firebasejs/5.10.1/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/5.10.1/firebase-auth.js"></script>
     <script src="https://www.gstatic.com/firebasejs/5.10.1/firebase-database.js"></script>
-    <script>
-      var fbconfig = {
-        apiKey: "AIzaSyCk0QafOxLmLwDyQXa58Ktrz_qjfl_Edf4",
-        authDomain: "inspire-social.firebaseapp.com",
-        databaseURL: "https://inspire-social.firebaseio.com",
-        projectId: "inspire-social",
-        storageBucket: "inspire-social.appspot.com",
-        messagingSenderId: "495940347374"
-      };
-      firebase.initializeApp(fbconfig);
-      const db = firebase.database();
-      //data stuff for the app
-      const problems = ["food insecurity", "food waste", "homelessness", "student debt", "medical debt", "domestic abuse", "petty crime", "drug abuse/addiction", "isolationism (as a political policy, not just loneliness)", "loneliness", "nationalism/racism", "misogyny/patriarchy", "systemic/institutionalized racism", " the school-to-prison pipeline", "prison system", "radicalism", "waste management problems", "human trafficking", "medical inaccessibility", "slavery", "gun violence", "future-proofing institutions", "fascism", "prejudice"]
-      const promptSkel = `{
-        "prob/fact": ["Put [problem] in perspective, find something demonstrating the scale of it. In numbers", "Find an example of a little effort going a long way for [problem].", "Make/find a flow chart of how [problem] works", "Find an example that shows how spread out [problem] is. (There is work to be done everywhere).", "Find a stat from before 2000 that shows how persistent [problem] is.", "Find a stat showing slow progress on [problem].", "Find a stat showing a prediction of just a LITTLE bit of effort being made to fix [problem]", "Find an example highlighting the slow road to recovery associated with [problem]"],
-        "prob/thought": ["How does [problem] make you feel personally? Why?", "What do you think it would be like if [problem] were solved?", "How does [problem] affect you?", "What change would you make to try to fix [problem] (if you had all the resources in the world)", "Give me your thoughts on the history of [problem]", "What’s a historic norm that we’ve broken?", "How have we dealt with [problem] in the past?", "What do you want to be remembered for?"],
-        "solution/fact": ["Find a really cool stat about the NPS market.", "Find a really hopeful indicator in the economy right now.", "Any promising stats for us? People being interested in getting involved.", "Find a stat on people's feelings toward volunteer work and the obstacles.", "What are some obstacles you face in doing more?", "Find a stat about what a little bit of effort can do for [problem] - or another cause.", "Find a stat about how many of some new crazy thing there are in the world", "Any stats on the sharing economy?", "Find out a stat about what people usually spend their time on.", "What’s a good deed you could do in less than 10 minutes?", "What things do Americans have an abundance of that could fill needs of people suffering from the effects of [problem]?", "Any news/cool work being done to solve [problem]?"],
-        "solution/thought": ["How do you get pumped for civic work?", "Any nice stories you want to share your thoughts on?", "How do you cope with hearing about [problem] (or any other problems) in the world?", "Give an example of how easy Go Unite could make things?", "What's a project that would work well on Go Unite to combat [problem]?", "What do you think will be the next big thing for the sharing economy?", "Will the sharing economy change the landscape surrounding [problem]?", "What innovative, techy, just down-right future-as-hell thing did you hear about recently?", "What’s a good deed you do everyday?", "What’s a good deed you could do as like a byproduct of a routine act?"]
-      }`;
-
-      //All the Vue stuff ============================================================================================
-      new Vue({
-        el: "#app",
-        data: {
-          thisData: {
-            prompt: '',
-            type: '',
-            problem: '',
-          },
-          entry: '',
-        },
-        methods: {
-          genPrompt: function () {
-            let prompts = JSON.parse(promptSkel);
-            let categoryIndex = Math.floor(Math.random() * 4);
-            let category = prompts[Object.keys(prompts)[categoryIndex]];
-            let prompt = category[Math.floor(Math.random() * category.length)];
-            let thisProblem = problems[Math.floor(Math.random() * problems.length)];
-            let keyMaybe = Object.keys(prompts)[categoryIndex];
-            prompt = prompt.replace("[problem]", thisProblem);
-            
-            let problem = thisProblem;
-            let type = keyMaybe
-            let thisData = {
-              prompt: prompt,
-              type: type,
-              problem: problem,
-            }
-            
-            return thisData;
-          },
-          
-          submitResponse: function (entry) {
-            var today = new Date();
-            var date = today.getMonth() + '/' + today.getDate();
-            var time = today.getHours() + ':' + today.getMinutes() + ':' + today.getSeconds();
-            db.ref(date+'/'+time).set({
-              response: entry,
-              type: this.thisData.type,
-              prompt: this.thisData.prompt
-              },
-              function(){
-                console.log('posted');
-              });
-            console.log(time + ' ' + entry);
-          },
-          next: function () {
-            this.thisData = this.genPrompt();
-          },
-        },
-        beforeMount(){
-          this.thisData =  this.genPrompt();
-        }
-      },
-      )
-    </script>
+    <script src="app.js"></script>
   </body>
 </html>

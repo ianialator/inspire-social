@@ -9,6 +9,7 @@ h2 {
   font-weight: bold;
   font-size: 30px;
   margin-bottom: 25px;
+  color: #d3ccc3
 }
 
 p {
@@ -38,7 +39,7 @@ button {
   color: #EDE7D9;
   padding: 10px;
   position: relative;
-  border-color: #ffffff
+  border-color: #ffffff;
   animation: buttons 50s ease infinite;
 }
 
@@ -56,4 +57,41 @@ button {
   0%{border-color:#ffffff}
   50%{border-color:#c9fcf7}
   100%{border-color:#fcc9c9}
+}
+
+#card{
+  width: 80%;
+  background-color: #d3ccc3;
+  box-shadow: #4b4237, 3, 2;
+  border-radius: 10px;
+  margin: auto;
+  padding: 20px;
+  margin-bottom: 30px;
+  text-align: center;
+}
+table{
+  text-align: center;
+  margin: 4px;
+  width: 95%;
+  table-layout: fixed;
+  border: 1px solid black;
+}
+ tr {
+  text-align: center;
+  vertical-align: middle;
+  width: 100%;
+} 
+th {
+  text-align: center;
+  vertical-align: middle;
+  padding: 15px;
+  color: #EDE7D9;
+  background: #7c7975;
+  border: 1px solid gray;
+}
+td {
+  text-align: center;
+  vertical-align: middle;
+  padding: 10px;
+  border: 1px solid gray;
 }
