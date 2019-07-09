@@ -84,8 +84,8 @@ new Vue({
 
     submitResponse: function (entry) {
       var today = new Date();
-      var date = today.getMonth() + today.getDate();
-      var time = today.getHours() + today.getMinutes() + ':' + today.getSeconds();
+      var date = today.getDate();
+      var time = today.getHours() + ':' + today.getMinutes() + ':' + today.getSeconds();
       db.ref(date + '::' + time).set({
           type: this.promptData,
           response: entry,
