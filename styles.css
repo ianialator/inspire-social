@@ -9,7 +9,8 @@ h2 {
   font-weight: bold;
   font-size: 30px;
   margin-bottom: 25px;
-  color: #d3ccc3
+  color: #d3ccc3;
+  font-family: 'Russo One', sans-serif;
 }
 
 p {
@@ -88,10 +89,12 @@ th {
   color: #EDE7D9;
   background: #7c7975;
   border: 1px solid gray;
+  font-family: 'Oswald', sans-serif;
 }
 td {
   text-align: center;
   vertical-align: middle;
   padding: 10px;
   border: 1px solid gray;
+  font-family: 'Roboto Mono', monospace;
 }
