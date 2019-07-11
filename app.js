@@ -10,7 +10,7 @@ firebase.initializeApp(fbconfig);
 const db = firebase.database();
 
 //data stuff for the app
-const ageOpt = ["18-20", "21-25", "26-30", "31-40", "41-50", "51-65", "66-79", "80-90]
+const ageOpt = ["18-20", "21-25", "26-30", "31-40", "41-50", "51-65", "66-79", "80-90];
 const marStatOpt = ["Single", "Married (no kids)", "Married (w/ kids)"];
 const jobPrefOpt = {
   "stress": ["low stress", "medium stress", "high stress"],
