@@ -10,6 +10,7 @@ firebase.initializeApp(fbconfig);
 const db = firebase.database();
 
 //data stuff for the app
+const ageOpt = ["18-20", "21-25", "26-30", "31-40", "41-50", "51-65", "66-79", "80-90]
 const marStatOpt = ["Single", "Married (no kids)", "Married (w/ kids)"];
 const jobPrefOpt = {
   "stress": ["low stress", "medium stress", "high stress"],
@@ -67,7 +68,7 @@ new Vue({
         let promptData = {
           name: name.toUpperCase(),
           gender: gen,
-          age: Math.floor(Math.random() * 90) + 17,
+          age: ageOpt[Math.floor(Math.random() * ageOpt.length)],
           marStat: marStatOpt[Math.floor(Math.random() * marStatOpt.length)],
           type: locOpt.type[Math.floor(Math.random() * locOpt.type.length)],
           distance: locOpt.dist[Math.floor(Math.random() * locOpt.dist.length)],
