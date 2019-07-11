@@ -57,7 +57,7 @@
         </table>
       </div>
       <form id="submit">
-        <input type="textarea" rows="8" cols="70" id="entry" name="entry" form="submit" autocomplete="off" v-model="entry" autofocus>
+        <textarea rows="8" cols="70" id="entry" name="entry" form="submit" autocomplete="off" v-model="entry" autofocus></textarea>
         <button @click.prevent="submitResponse(entry)"> SUBMIT</button>
         <button @click="genPrompt">PASS</button>
       </form>
