@@ -10,14 +10,14 @@ firebase.initializeApp(fbconfig);
 const db = firebase.database();
 
 //data stuff for the app
-const ageOpt = ["18-20", "21-25", "26-30", "31-40", "41-50", "51-65", "66-79", "80-90"];
+const ageOpt = ["16-19", "20-30", "31-50", "51-65", "66+"];
 const marStatOpt = ["Single", "Married (no kids)", "Married (w/ kids)"];
 const jobPrefOpt = {
   "stress": ["low stress", "medium stress", "high stress"],
-  "time": ["one-time thing", "weekly", "monthly", "yearly"]
+  "time": ["one-time thing", "weekly", "monthly", "every few months"]
 };
 const motiveOpt = ["Extra spending power", "supporting local businesses", "supporting a specific cause", "do some good in the world", "feel useful in their downtime", "get out and have some fun", "meet like-minded people", "get their friends and relatives involved in a cause", "tha clout", ];
-const causeOpt = ["climate change", "civil rights", "freedom of the press", "native issues", "preservation of democracy", "anti-poverty", "homelessness", "domestic abuse", "food insecurity/waste", "drug addiction", "systemic/institutionalized discrimination", "the school-to-prison pipeline", "prison reform", "radicalism", "human trafficing", "waste management", "gun violence", "medical instability"];
+const causeOpt = ["climate change", "civil rights", "freedom of the press", "native issues", "preservation of democracy", "anti-poverty", "homelessness", "domestic abuse", "food insecurity/waste", "drug addiction", "systemic/institutionalized discrimination", "the school-to-prison pipeline", "prison reform", "radicalism", "human trafficking", "waste management", "gun violence", "medical instability"];
 const locOpt = {
   "type": ["Urban", "Rural", "suburban"],
   "dist": ["Local", "Non-local"]
