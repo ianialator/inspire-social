@@ -17,45 +17,9 @@
   </head>
   <body>
     <div id="app">
-      <h2>MEET {{promptData.name}}</h2>
-      <div id="card">
-        <table>
-          <tr>
-            <th>Age</th>
-            <th>Gender</th>
-            <th>Marital Status</th>
-            <th colspan="2">Location</th>
-          </tr>
-          <tr>
-            <td>{{promptData.age}}</td>
-            <td>{{promptData.gender}}</td>
-            <td>{{promptData.marStat}}</td>
-            <td>{{promptData.type}}</td>
-            <td>{{promptData.distance}}</td>
-          </tr>
-        </table>
-        <table>
-          <tr>
-            <th colspan="2">Job Preference</th>
-            <th>Cause(s)</th>
-          </tr>
-          <tr>
-            <td>{{promptData.jobStress}}</td>
-            <td>{{promptData.jobTime}}</td>
-            <td>{{promptData.cause}}</td>
-          </tr>
-        </table>
-        <table>
-          <tr>
-            <th>Motive</th>
-            <th>Tech Skill</th>
-          </tr>
-          <tr>
-            <td>{{promptData.motive}}</td>
-            <td>{{promptData.techSkill}}</td>
-          </tr>
-        </table>
-      </div>
+      <h2> Your Prompt is...</h2>
+      <br></br>
+      <h1> {{promptdata.}} </h1>
       <form id="submit">
         <textarea rows="8" cols="70" id="entry" name="entry" form="submit" autocomplete="off" v-model="entry" autofocus></textarea>
         <br></br>
