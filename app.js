@@ -10,73 +10,41 @@ firebase.initializeApp(fbconfig);
 const db = firebase.database();
 
 //data stuff for the app
-const ageOpt = ["16-19", "20-30", "31-50", "51-65", "66+"];
-const marStatOpt = ["Single", "Married (no kids)", "Married (w/ kids)"];
-const jobPrefOpt = {
-  "stress": ["low stress", "medium stress", "high stress"],
-  "time": ["one-time thing", "weekly", "monthly/quarterly"]
+const prompts = {
+  "ed resource": ["How do I get involved in...", "Who in the area helps with...", "Where do I start if I want to help the cause of...", "Got any info on how to volunteer at..."],
+  "cool story": ["What's going on in th world of...", "Go dig up a story about..."],
+  "project update": ["What's something (new or old) thing we could use help on?", "What we are doing this week?", "what unexpected thing has happened in the past couple weeks? (good or bad)"]
 };
-const motiveOpt = ["Extra spending power", "supporting local businesses", "supporting a specific cause", "do some good in the world", "feel useful in their downtime", "get out and have some fun", "meet like-minded people", "get their friends and relatives involved in a cause", "tha clout", ];
-const causeOpt = ["climate change", "civil rights", "freedom of the press", "native issues", "preservation of democracy", "anti-poverty", "homelessness", "domestic abuse", "food insecurity/waste", "drug addiction", "systemic/institutionalized discrimination", "the school-to-prison pipeline", "prison reform", "radicalism", "human trafficking", "waste management", "gun violence", "medical instability"];
-const locOpt = {
-  "type": ["Urban", "Rural", "suburban"],
-  "dist": ["Local", "Non-local"]
-}
-const techSkillOpt = ["Beginner", "Intermediate", "Advanced"]
 
-
-
+const causes = []
+const topicOpts = ["volunteering", "open-source philosophy", "the gig economy", "decentralization", "grassroots activism", "people doing good for their community"] 
 //All the Vue stuff ============================================================================================
+// DATA comes first...............
 new Vue({
   el: "#app",
   data: {
     apID: '',
     promptData: {
-      name: '',
-      age: '',
-      gender: '',
-      type: '',
-      distance: '',
-      marStat: '',
-      jobStress: '',
-      jobTime: '',
-      cause: '',
-      motive: '',
-      techSkill: '',
+      promptCat: '',
+      CurPrompt: '',
+      causeOpt: '',
+      GUtopic: '',
     },
     entry: '',
   },
-  
+// then the METHODS / FUNCTIONS................
   methods: {
     genPrompt: function () {
-      ///** NAME GETTER
       var apID
       var self = this
 
       var request = new XMLHttpRequest()
-      request.open('GET', 'https://uinames.com/api/?region=united%20states', true)
       request.onload = function () {
-        apID = JSON.parse(this.response)
-        let name = apID.name
-        let genderPicker = Math.floor(Math.random() * 100)
-        let gen = ''
-        if (genderPicker == 0){
-          gen = 'other'
-        } else {
-          gen = apID.gender
-        }
+      let promptCat = [Math.floor(Math.random() * prompts.length)]
         let promptData = {
-          name: name.toUpperCase(),
-          gender: gen,
-          age: ageOpt[Math.floor(Math.random() * ageOpt.length)],
-          marStat: marStatOpt[Math.floor(Math.random() * marStatOpt.length)],
-          type: locOpt.type[Math.floor(Math.random() * locOpt.type.length)],
-          distance: locOpt.dist[Math.floor(Math.random() * locOpt.dist.length)],
-          jobStress: jobPrefOpt.stress[Math.floor(Math.random() * jobPrefOpt.stress.length)],
-          jobTime: jobPrefOpt.time[Math.floor(Math.random() * jobPrefOpt.time.length)],
-          cause: causeOpt[Math.floor(Math.random() * causeOpt.length)],
-          motive: motiveOpt[Math.floor(Math.random() * motiveOpt.length)],
-          techSkill: techSkillOpt[Math.floor(Math.random() * techSkillOpt.length)],
+          curPrompt: [Math.floor(Math.random() * promptCat.length)],
+          cause: [Math.floor(Math.random() * causeOpt.length)],
+          GUtopic: [Math.floor(Math.random() * topicsOpt.length)]
         }
         self.promptData = promptData
       }
@@ -100,6 +68,7 @@ new Vue({
       this.genPrompt();
     },
   },
+  // and here is a spot for HOOKS.........
   mounted() {
     this.genPrompt();
   }
