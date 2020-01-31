@@ -10,7 +10,7 @@ firebase.initializeApp(fbconfig);
 const db = firebase.database();
 
 //data stuff for the app
-const prompts = {
+const promptData = {
   "ed resource": ["How do I get involved in...", "Who in the area helps with...", "Where do I start if I want to help the cause of...", "Got any info on how to volunteer at..."],
   "cool story": ["What's going on in th world of...", "Go dig up a story about..."],
   "project update": ["What's something (new or old) thing we could use help on?", "What we are doing this week?", "what unexpected thing has happened in the past couple weeks? (good or bad)"]
