@@ -26,7 +26,7 @@ new Vue({
     apID: '',
     promptData: {
       promptCat: '',
-      CurPrompt: '',
+      curPrompt: '',
       causeOpt: '',
       GUtopic: '',
     },
@@ -38,8 +38,6 @@ new Vue({
       var apID
       var self = this
 
-      var request = new XMLHttpRequest()
-      request.onload = function () {
       let promptCat = [Math.floor(Math.random() * prompts.length)]
         let promptData = {
           curPrompt: [Math.floor(Math.random() * promptCat.length)],
@@ -48,7 +46,6 @@ new Vue({
         }
         self.promptData = promptData
       }
-      request.send()
     },
 
     submitResponse: function (entry) {
