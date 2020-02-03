@@ -53,12 +53,10 @@ new Vue({
       var date = today.getDate();
       var time = today.getHours() + ':' + today.getMinutes() + ':' + today.getSeconds();
       db.ref(date + '::' + time).set({
-          type: this.promptData,
-          response: entry,
-        },
-        function () {
-          console.log('posted');
-        });
+        type: this.promptData,
+        response: entry,
+      }),
+      console.log('posted @:');
       console.log(time + ':' + entry);
     },
     next: function () {
@@ -69,4 +67,4 @@ new Vue({
   mounted() {
     this.genPrompt();
   }
-})
+}
