@@ -67,4 +67,4 @@ new Vue({
   mounted() {
     this.genPrompt();
   }
-}
+})
