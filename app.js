@@ -36,7 +36,6 @@ new Vue({
   methods: {
     genPrompt: function () {
       var apID
-      var self = this
 
       let promptCat = [Math.floor(Math.random() * prompts.length)]
         let promptData = {
@@ -44,7 +43,7 @@ new Vue({
           cause: [Math.floor(Math.random() * causeOpt.length)],
           GUtopic: [Math.floor(Math.random() * topicsOpt.length)]
         },
-        self.promptData = promptData
+        this.promptData = promptData
       }
     },
 
