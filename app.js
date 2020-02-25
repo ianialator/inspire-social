@@ -42,7 +42,7 @@ new Vue({
           curPrompt: [Math.floor(Math.random() * promptCat.length)],
           cause: [Math.floor(Math.random() * causeOpt.length)],
           GUtopic: [Math.floor(Math.random() * topicsOpt.length)]
-        },
+        }
       }
     },
 
