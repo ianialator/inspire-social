@@ -62,7 +62,7 @@ new Vue({
     },
   },
   // and here is a spot for HOOKS.........
-  mounted() {
+  mounted: function() {
     this.genPrompt();
   }
 })
